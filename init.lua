@@ -1045,6 +1045,10 @@ require('lazy').setup({
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
+      -- Add file explorer
+      require('mini.files').setup()
+      vim.keymap.set('n', '<leader>m', ':lua MiniFiles.open()<CR>', { noremap = true, silent = true, desc = 'Open Mini Files' })
+
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
