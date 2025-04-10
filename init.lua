@@ -167,7 +167,7 @@ vim.opt.confirm = true
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
-
+vim.keymap.set('n', '<leader>ww', ':set wrap!<CR>')
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -1046,7 +1046,12 @@ require('lazy').setup({
       require('mini.surround').setup()
 
       -- Add file explorer
-      require('mini.files').setup()
+      require('mini.files').setup {
+        options = {
+          -- Use this option to avoid mini.files taking over netrw
+          use_as_default_explorer = false,
+        },
+      }
       vim.keymap.set('n', '<leader>m', ':lua MiniFiles.open()<CR>', { noremap = true, silent = true, desc = 'Open Mini Files' })
 
       -- Simple and easy statusline.
