@@ -1091,7 +1091,12 @@ require('lazy').setup({
           use_as_default_explorer = false,
         },
       }
-      vim.keymap.set('n', '<leader>m', ':lua MiniFiles.open()<CR>', { noremap = true, silent = true, desc = 'Open Mini Files' })
+      vim.keymap.set('n', '<leader>m', function()
+        local buf_name = vim.api.nvim_buf_get_name(0)
+        local path = vim.fn.filereadable(buf_name) == 1 and buf_name or vim.fn.getcwd()
+        MiniFiles.open(path)
+        MiniFiles.reveal_cwd()
+      end, { noremap = true, silent = true, desc = 'Open Mini Files' })
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
