@@ -167,6 +167,7 @@ vim.opt.confirm = true
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
+vim.keymap.set('n', '<C-s>', ':update<CR>')
 vim.keymap.set('n', '<leader>ww', ':set wrap!<CR>')
 vim.keymap.set('n', '<leader>q', ':q!<CR>', { desc = '[q]uit nvim' })
 -- Clear highlights on search when pressing <Esc> in normal mode
